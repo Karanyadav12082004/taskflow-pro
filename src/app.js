@@ -10,6 +10,7 @@ const app = express();
 app.use(helmet());
 app.use(compression());
 app.use(express.json({ limit: "10mb" }));
+app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
 app.use(rateLimiter);
