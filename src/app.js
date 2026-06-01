@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require("express");
 const helmet = require("helmet");
 const compression = require("compression");
@@ -13,6 +14,7 @@ app.use(express.json({ limit: "10mb" }));
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(morgan("combined"));
+app.use(express.static(path.join(__dirname, '../public')));
 app.use(rateLimiter);
 
 app.use("/health", require("./routes/health"));
